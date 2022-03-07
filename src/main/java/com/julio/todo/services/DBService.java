@@ -1,6 +1,7 @@
 package com.julio.todo.services;
 
-import java.time.LocalDateTime;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +18,16 @@ public class DBService {
 	private TodoRepository todoRepository;
 	
 	@Bean
-	public void instanciaBaseDados() {
-		LocalDateTime localDateTime = LocalDateTime.now();
-		Todo t1 = new Todo(null, "Estudar", "fdfdaffsdfsd", localDateTime, false);
-		Todo t2 = new Todo(null, "Ler", "frefregegr", localDateTime, false);
-		Todo t3 = new Todo(null, "Correr", "frefrefrf", localDateTime, false);
-		Todo t4 = new Todo(null, "Meditar", "frefre", localDateTime, true);
-		Todo t5 = new Todo(null, "Trabalhar", "ferr", localDateTime, false);
-		Todo t6 = new Todo(null, "Jogar", "frefreegrg", localDateTime, true);
+	public void instanciaBaseDados() throws ParseException {
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
+		Todo t1 = new Todo(null, "Estudar", "Estudar Spring Boot e Angular", sdf.parse("03/03/2022"), false);
+		Todo t2 = new Todo(null, "Exercitar", "Praticar exercicio fisico", sdf.parse("03/03/2022"), false);
+		Todo t3 = new Todo(null, "Ler", "Ler um livro para aumentar nivel", sdf.parse("03/03/2022"), false);
+		Todo t4 = new Todo(null, "Meditar", "Meditar para manter calma", sdf.parse("03/03/2022"), false);
+		Todo t5 = new Todo(null, "Lutar", "Estudar Spring Boot e Angular", sdf.parse("03/03/2022"), false);
+		Todo t6 = new Todo(null, "Gritar", "Estudar Spring Boot e Angular", sdf.parse("03/03/2022"), false);
 		
 		todoRepository.saveAll(Arrays.asList(t1, t2, t3, t4, t5, t6));
 	}
