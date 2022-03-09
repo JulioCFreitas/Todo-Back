@@ -21,6 +21,8 @@ public class Todo implements Serializable{
 	private Integer id;
 	private String titulo;
 	private String descricao;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataParaFinalizar;
 	private Boolean finalizado = false;
 	
@@ -35,13 +37,6 @@ public class Todo implements Serializable{
 		this.descricao = descricao;
 		this.dataParaFinalizar = dataParaFinalizar;
 		this.finalizado = finalizado;
-	}
-
-
-	public Todo(Object object, String string, String string2, Date date, boolean b) {
-		super();
-	
-		
 	}
 
 
